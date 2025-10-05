@@ -7,7 +7,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: 'https://www.madhacks.io',
   redirects: {
-    "/apply": "https://airtable.com/appJa8ymShCTPpH9I/pag4LEoIQeaesXAfw/form",
+    "/apply": "https://airtable.com/appTh3C58aKBlgn0e/pagVgAsoZTgmN9Pmn/form",
     "/walkin": "https://airtable.com/appJa8ymShCTPpH9I/paghpcEx85qF2eOAr/form",
     "/devpost": "https://madhacks.devpost.com",
     "/project": "https://airtable.com/appJa8ymShCTPpH9I/pag0C9Q3PGBC9qArU/form",
