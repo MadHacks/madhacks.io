@@ -8,7 +8,7 @@ export default defineConfig({
   site: 'https://www.madhacks.io',
   redirects: {
     "/apply": "https://airtable.com/appTh3C58aKBlgn0e/pagVgAsoZTgmN9Pmn/form",
-    "/walkin": "https://airtable.com/appJa8ymShCTPpH9I/paghpcEx85qF2eOAr/form",
+    "/walkin": "https://airtable.com/appTh3C58aKBlgn0e/pagDNAYeqCC6QqwSz/form",
     "/devpost": "https://madhacks.devpost.com",
     "/project": "https://airtable.com/appJa8ymShCTPpH9I/pag0C9Q3PGBC9qArU/form",
     "/organizer-interest": "https://airtable.com/appl182mk027OC698/pag8XoUukjguwopgE/form"
