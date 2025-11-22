@@ -9,7 +9,7 @@ export default defineConfig({
   redirects: {
     "/apply": "https://airtable.com/appTh3C58aKBlgn0e/pagVgAsoZTgmN9Pmn/form",
     "/walkin": "https://airtable.com/appTh3C58aKBlgn0e/pagDNAYeqCC6QqwSz/form",
-    "/devpost": "https://madhacks.devpost.com",
+    "/devpost": "https://madhacks-fall-2025.devpost.com",
     "/project": "https://airtable.com/appJa8ymShCTPpH9I/pag0C9Q3PGBC9qArU/form",
     "/organizer-interest": "https://airtable.com/appl182mk027OC698/pag8XoUukjguwopgE/form"
   },
