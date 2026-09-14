@@ -1,10 +1,10 @@
 {
     "name": "MadHacks Website",
-    "image": "mcr.microsoft.com/devcontainers/universal",
+    "image": "mcr.microsoft.com/devcontainers/javascript-node:dev-26-trixie",
     "postStartCommand": "npm i",
-    "forwardPorts": [3000],
+    "forwardPorts": [4321],
     "portsAttributes": {
-        "3000": {
+        "4321": {
             "label": "Website",
             "onAutoForward": "openPreview"
         }
