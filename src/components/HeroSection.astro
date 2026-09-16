@@ -1,48 +1,11 @@
 ---
 import Container from "./Container.astro";
-import { Image, Picture } from "astro:assets";
+import { Picture } from "astro:assets";
 import logo from "../images/logo.png";
 import Starfield from "./Starfield.astro";
-
-// Small seeded PRNG so the photo shuffle is deterministic across builds/loads.
-function mulberry32(seed) {
-  return function () {
-    seed |= 0;
-    seed = (seed + 0x6d2b79f5) | 0;
-    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-const photoModules = import.meta.glob<{ default: ImageMetadata }>(
-  "../images/photos2025/*.{jpg,jpeg,png,webp,avif}",
-  { eager: true }
-);
-const photos = Object.entries(photoModules)
-  .sort(([a], [b]) => a.localeCompare(b))
-  .map(([, module]) => ({ image: module.default }));
-
-// Deterministic Fisher-Yates shuffle (fixed seed).
-const rand = mulberry32(20251122);
-for (let i = photos.length - 1; i > 0; i--) {
-  const j = Math.floor(rand() * (i + 1));
-  [photos[i], photos[j]] = [photos[j], photos[i]];
-}
-
-// Keep a constant px/s at the medium band height so the band's
-// motion scales proportionally with its height across breakpoints.
-const MD_BAND_HEIGHT = 171;
-const PX_PER_SECOND = 100;
-const copyWidth = photos.reduce(
-  (sum, photo) =>
-    sum + (MD_BAND_HEIGHT * photo.image.width) / photo.image.height,
-  0
-);
-const marqueeDuration = Math.max(45, Math.round(copyWidth / PX_PER_SECOND * 1.5));
 ---
 
-<div class="relative flex min-h-full min-w-0 overflow-x-clip">
+<div class="relative min-h-full flex">
   <Starfield />
   <div
     aria-hidden="true"
@@ -53,11 +16,11 @@ const marqueeDuration = Math.max(45, Math.round(copyWidth / PX_PER_SECOND * 1.5)
     <div class="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300">
     </div>
   </div>
-  <Container class="w-full min-w-0">
+  <Container class="w-full">
     <div
-      class="relative flex min-h-full min-w-0 items-center pb-16 pt-16 sm:pb-20 sm:pt-10"
+      class="relative pb-16 pt-16 sm:pt-10 sm:pb-20 ml-auto min-h-full flex items-center"
     >
-      <div class="mx-auto min-w-0 text-center lg:w-2/3">
+      <div class="lg:w-2/3 text-center mx-auto">
         <h1
           class="font-header text-white font-semibold text-5xl md:text-6xl xl:text-7xl"
         >
@@ -70,37 +33,13 @@ const marqueeDuration = Math.max(45, Math.round(copyWidth / PX_PER_SECOND * 1.5)
           style="animation: 5s ease-in-out 0s infinite dropShadow"
           loading="eager"
           alt="MadHacks Brain and Blue Wave Logo"
-          class="mx-auto flex justify-center my-6 w-[171px] md:w-[213px] xl:w-[256px] h-[139px] md:h-[171px] xl:h-[213px]"
+          class="mx-auto flex justify-center my-6 w-64 md:w-80 xl:w-96 h-52 md:h-64 xl:h-80"
           src={logo}
           sizes="(min-width: 1280px) 384px, (min-width: 768px) 320px, 256px"
           widths={[256, 320, 384, 512, 640, 768]}
           formats={["avif", "webp", "png"]}
           quality={90}
         />
-        <a
-          href="https://photos.app.goo.gl/BTtYYzpxGYXFAuDQA"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="View MadHacks 2025 photos"
-          class="photo-carousel mb-6 block h-[139px] overflow-hidden md:h-[171px] xl:h-[213px]"
-        >
-          <div
-            class="photo-track flex h-full w-max will-change-transform"
-            style={`animation-duration: ${marqueeDuration}s`}
-          >
-            {[...photos, ...photos].map((photo) => (
-              <Image
-                src={photo.image}
-                alt=""
-                decoding="async"
-                class="h-full w-auto shrink-0"
-              />
-            ))}
-          </div>
-        </a>
-        <h2
-          class="font-header text-white font-semibold text-3xl md:text-4xl xl:text-5xl mb-4"
-        >
         <!-- <h2 class="font-header text-white font-semibold text-3xl md:text-4xl xl:text-5xl mb-4">
           Thanks for coming!
         </h2> -->
@@ -182,29 +121,6 @@ const marqueeDuration = Math.max(45, Math.round(copyWidth / PX_PER_SECOND * 1.5)
     </div>
   </Container>
   <style>
-    @keyframes marquee {
-      from {
-        transform: translateX(-50%);
-      }
-      to {
-        transform: translateX(0);
-      }
-    }
-    .photo-track {
-      animation: marquee 120s linear infinite;
-    }
-    .photo-carousel {
-      /* Escape Container's responsive padding without relying on transforms. */
-      width: 100vw;
-      width: 100dvw;
-      margin-inline: calc(50% - 50vw);
-      margin-inline: calc(50% - 50dvw);
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .photo-track {
-        animation: none;
-      }
-    }
     @keyframes dropShadow {
       0% {
         filter: drop-shadow(0px 0px 25px #0096b1c0);

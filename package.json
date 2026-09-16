@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "pnpm@9.1.4",
   "scripts": {
-    "dev": "astro dev --host",
+    "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
