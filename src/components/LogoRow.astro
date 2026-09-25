@@ -1,0 +1,19 @@
+---
+// Shared, untiered layout: centers child logos and wraps them onto new lines.
+// Partners use this directly; SponsorTier wraps it with sponsor sizing defaults.
+interface Props {
+    /** Default child logo height, inherited through the --logo-height CSS variable. */
+    logoHeight?: string;
+    /** Replaces the default row spacing. */
+    class?: string;
+}
+
+const { logoHeight = "2.5rem", class: className = "mt-2" } = Astro.props;
+---
+
+<div
+    class:list={["flex flex-wrap justify-center items-center", className]}
+    style={{ "--logo-height": logoHeight }}
+>
+    <slot />
+</div>

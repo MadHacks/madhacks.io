@@ -1,0 +1,20 @@
+---
+import LogoRow from "./LogoRow.astro";
+
+// Sponsor-only wrapper that supplies default logo sizes and row spacing.
+// Individual SponsorLogo heights can override these defaults for unusual logos.
+interface Props {
+    /** Tier 1 = Mendota, tier 2 = Monona, tier 3 = Wingra. */
+    tier: 1 | 2 | 3;
+    /** Replaces the tier's default row spacing. */
+    class?: string;
+}
+
+const { tier, class: className = tier === 3 ? "mt-4" : "mt-2" } = Astro.props;
+const logoHeights = { 1: "8rem", 2: "5rem", 3: "2.5rem" };
+---
+
+<!-- Tiers control presentation only; no visible tier labels. -->
+<LogoRow logoHeight={logoHeights[tier]} class={className}>
+    <slot />
+</LogoRow>

@@ -1,0 +1,59 @@
+---
+// Renders one linked logo for either a sponsor or a partner.
+// Use height for sizing, class/style for wrapper spacing, and imageClass/imageStyle
+// for adjustments to the image itself (for example, BUBBL’R's negative top margin).
+interface Props {
+    /** Organization name used in the image's accessible alt text. */
+    name: string;
+    href: string;
+    src: string;
+    /** CSS height; inherits the row's size when omitted, or uses 2.5rem outside a row. */
+    height?: string;
+    /** Resting filter: white silhouette, inverted colors, or original colors.
+     * All variants use 70% opacity and restore original colors/full opacity on hover or focus.
+     */
+    appearance?: "monochrome" | "inverted" | "original";
+    /** Replaces the default padding; filters are controlled by appearance. */
+    class?: string;
+    /** Inline wrapper styles for custom spacing or other presentation overrides. */
+    style?: string;
+    /** Extra image classes, such as margin or positioning utilities. */
+    imageClass?: string;
+    /** Inline image styles, appended after the computed height so they can override it. */
+    imageStyle?: string;
+}
+
+const {
+    name,
+    href,
+    src,
+    height,
+    appearance = "monochrome",
+    class: className = "p-4",
+    style,
+    imageClass,
+    imageStyle = "",
+} = Astro.props;
+---
+
+<div
+    class:list={[
+        className,
+        "opacity-70 hover:invert-0 hover:brightness-100 hover:opacity-100 focus-within:invert-0 focus-within:brightness-100 focus-within:opacity-100",
+        {
+            "brightness-0 invert": appearance === "monochrome",
+            "brightness-100 invert": appearance === "inverted",
+        },
+    ]}
+    style={style}
+>
+    <a href={href} target="_blank" rel="noopener noreferrer">
+        <img
+            src={src}
+            class:list={["w-auto mx-auto", imageClass]}
+            style={`height: ${height ?? "var(--logo-height, 2.5rem)"}; ${imageStyle}`}
+            loading="lazy"
+            alt={`${name} logo`}
+        />
+    </a>
+</div>
