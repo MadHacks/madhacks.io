@@ -1,25 +1,40 @@
 ---
-// Renders one linked logo for either a sponsor or a partner.
-// Use height for sizing, class/style for wrapper spacing, and imageClass/imageStyle
-// for adjustments to the image itself (for example, BUBBL’R's negative top margin).
+import { randomUUID } from "node:crypto";
+
+// Shared sponsor/partner logo. Use padding/class/style for the wrapper,
+// imageClass/imageStyle for the image.
 interface Props {
-    /** Organization name used in the image's accessible alt text. */
+    /** Used for alt text. */
     name: string;
     href: string;
     src: string;
-    /** CSS height; inherits the row's size when omitted, or uses 2.5rem outside a row. */
+    /** Defaults to the row height, or 2.5rem without a row. */
     height?: string;
-    /** Resting filter: white silhouette, inverted colors, or original colors.
-     * All variants use 70% opacity and restore original colors/full opacity on hover or focus.
+    /** Appearance before hover or keyboard focus:
+     * - monochrome (default): turns all visible pixels white, keeping transparency.
+     *   Details that rely on different colors will blend together.
+     * - inverted: reverses RGB colors (black becomes white, white becomes black).
+     *   Keeps transparency and the contrast between light and dark details.
+     * - original: keeps the image's original colors.
+     * - grayscale: removes color while keeping shading, white text, and transparency.
+     *   Use it for detailed logos that lose important features in monochrome.
+     * - cutout: turns artwork white and uses brightness to remove white details.
+     *   Darker colors stay solid; pale colors fade. Existing transparency is kept.
+     *   This removes ALL white pixels, including text outside a colored shape.
+     *   Use grayscale when that text needs to stay visible.
+     * All options start at 70% opacity. Hover/focus restores the original colors
+     * and 100% opacity. These filters don't change the source image.
      */
-    appearance?: "monochrome" | "inverted" | "original";
-    /** Replaces the default padding; filters are controlled by appearance. */
+    appearance?: "monochrome" | "inverted" | "original" | "grayscale" | "cutout";
+    /** CSS padding override, such as "1rem 1.5rem". Defaults to the wrapper's p-4 class. */
+    padding?: string;
+    /** Replaces the default p-4 wrapper class. */
     class?: string;
-    /** Inline wrapper styles for custom spacing or other presentation overrides. */
+    /** Wrapper styles. */
     style?: string;
-    /** Extra image classes, such as margin or positioning utilities. */
+    /** Extra classes on the image. */
     imageClass?: string;
-    /** Inline image styles, appended after the computed height so they can override it. */
+    /** Image styles; can override height. */
     imageStyle?: string;
 }
 
@@ -29,24 +44,53 @@ const {
     src,
     height,
     appearance = "monochrome",
+    padding,
     class: className = "p-4",
     style,
     imageClass,
     imageStyle = "",
 } = Astro.props;
+// Keep filter IDs unique when several logos use cutout.
+const cutoutFilterId = appearance === "cutout" ? `logo-cutout-${randomUUID()}` : undefined;
+const wrapperStyle = [
+    cutoutFilterId ? `--logo-cutout-filter: url(#${cutoutFilterId});` : undefined,
+    style,
+    padding ? `padding: ${padding};` : undefined,
+].filter(Boolean).join(" ");
 ---
 
 <div
     class:list={[
         className,
-        "opacity-70 hover:invert-0 hover:brightness-100 hover:opacity-100 focus-within:invert-0 focus-within:brightness-100 focus-within:opacity-100",
+        "opacity-70 hover:invert-0 hover:grayscale-0 hover:brightness-100 hover:opacity-100 focus-within:invert-0 focus-within:grayscale-0 focus-within:brightness-100 focus-within:opacity-100",
         {
+            "logo-cutout": appearance === "cutout",
+            "grayscale": appearance === "grayscale",
             "brightness-0 invert": appearance === "monochrome",
             "brightness-100 invert": appearance === "inverted",
         },
     ]}
-    style={style}
+    style={wrapperStyle || undefined}
 >
+    <!-- Hidden filter definition, referenced by --logo-cutout-filter. -->
+    {cutoutFilterId && (
+        <svg width="0" height="0" class="absolute pointer-events-none" aria-hidden="true" focusable="false">
+            <defs>
+                <filter id={cutoutFilterId} color-interpolation-filters="sRGB">
+                    <!-- White output; alpha = 3 * (1 - luminance), clamped to 0–1.
+                         The boost keeps midtones solid while white becomes transparent. -->
+                    <feColorMatrix in="SourceGraphic" type="matrix" values="
+                        0 0 0 0 1
+                        0 0 0 0 1
+                        0 0 0 0 1
+                        -0.6378 -2.1456 -0.2166 0 3
+                    " />
+                    <!-- Keep the source alpha so transparent edges stay transparent. -->
+                    <feComposite in2="SourceGraphic" operator="in" />
+                </filter>
+            </defs>
+        </svg>
+    )}
     <a href={href} target="_blank" rel="noopener noreferrer">
         <img
             src={src}
@@ -57,3 +101,10 @@ const {
         />
     </a>
 </div>
+
+<style>
+    /* Show the original image on hover or keyboard focus. */
+    .logo-cutout:not(:hover):not(:focus-within) img {
+        filter: var(--logo-cutout-filter);
+    }
+</style>

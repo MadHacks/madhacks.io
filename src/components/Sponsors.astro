@@ -12,39 +12,86 @@ import SponsorTier from "./SponsorTier.astro";
     <div class="relative pb-10 pt-10 sm:pt-10 sm:pb-20 ml-auto min-h-full flex flex-col items-center">
         <h1 class="font-header text-white font-semibold text-3xl md:text-4xl xl:text-5xl mt-4 mb-4 sponsors">Fall 2026 Sponsors</h1>
         <SponsorTier tier={1}>
-            <!-- <SponsorLogo name="American Family Insurance" href="https://www.amfam.com/careers" src="./images/sponsors/americanfamilyinsurance.svg" /> -->
+            <SponsorLogo name="American Family Insurance" href="https://www.amfam.com/careers" src="./images/sponsors/americanfamilyinsurance.svg" />
         </SponsorTier>
         <SponsorTier tier={2}>
-            <SponsorLogo name="TDS Telecom" href="https://tdstelecom.com/careers.html" src="./images/sponsors/tds.svg" />
-            <!-- <SponsorLogo name="Fish Audio" href="https://www.fish.audio/" src="./images/sponsors/fish-wordmark.svg" /> -->
-            <!-- <SponsorLogo name="Capital One" href="https://www.capitalonecareers.com/" src="./images/sponsors/capitalone.svg" /> -->
+            <!-- Use padding to fine-tune spacing for especially wide or crowded logo rows. -->
+            <SponsorLogo name="TDS Telecom" href="https://tdstelecom.com/careers.html" src="./images/sponsors/tds.svg" padding="1rem 1.5rem" />
+            <SponsorLogo name="Salesforce" href="https://www.salesforce.com/company/careers/" src="./images/sponsors/salesforce.svg" appearance="cutout" padding="1rem 1.5rem" />
+            <SponsorLogo name="UW–Madison CAI" href="https://cai.wisc.edu/" src="./images/sponsors/cai.png" height="8rem" appearance="grayscale" padding="1rem 1.5rem" imageStyle="width: 13.1rem; object-fit: cover; object-position: center;" />
+        </SponsorTier>
+        <SponsorTier tier={3}>
+            <SponsorLogo name="SIG" href="https://sig.com/careers/" src="./images/sponsors/SUSQUEHANNA_Logo_White.svg" />
+            <SponsorLogo name="Sparkles" href="https://sparkles.dev/careers" src="./images/sponsors/sparklesdev.svg" appearance="inverted" height="2.5rem" />
+            <!-- <SponsorLogo name="Mastra" href="https://mastra.ai/" src="./images/sponsors/mastra.svg" height="3rem" /> -->
         </SponsorTier>
         <SponsorTier tier={3}>
             <SponsorLogo name="Epic" href="https://careers.epic.com/" src="./images/sponsors/epic.svg" />
-            <SponsorLogo name="Sparkles" href="https://sparkles.dev/" src="./images/sponsors/sparklesdev.svg" appearance="inverted" />
+            <SponsorLogo name="Google" href="https://www.google.com/about/careers/" src="./images/sponsors/google.svg" height="3rem" />
             <!-- <SponsorLogo name="Madison Gas and Electric" href="https://www.mge.com/careers" src="./images/sponsors/mge.svg" height="6rem" /> -->
-            <!-- <SponsorLogo name="Google" href="https://www.google.com/about/careers/" src="./images/sponsors/google.svg" height="3rem" /> -->
-            <!-- <SponsorLogo name="Mastra" href="https://mastra.ai/" src="./images/sponsors/mastra.svg" height="3rem" /> -->
+        </SponsorTier>
+        <a href="/sponsorship.pdf"><p class="text-cyan-300 mt-8 mb-2">Interested in sponsoring? →</p></a>
+    </div>
+
+    <!-- <div class="relative pb-2 pt-0 sm:pt-0 sm:pb-5 ml-auto min-h-full flex flex-col items-center"> -->
+        <!-- <h1 class="font-header text-white font-semibold text-3xl md:text-4xl xl:text-5xl mt-4 mb-4">Fall 2026 Partners</h1> -->
+        <!-- <LogoRow> -->
+        <!-- </LogoRow> -->
+            <!-- <SponsorLogo name="interviewing.io" href="https://interviewing.io/" src="./images/partners/interviewingio.svg" height="2.5rem" /> -->
+            <!-- <SponsorLogo name="Red Bull" href="https://www.redbull.com/" src="./images/partners/redbull.svg" height="1.75rem" /> -->
+        
+        <!-- <LogoRow> -->
+            <!-- <SponsorLogo name="gener8tor" href="https://www.gener8tor.com/investment-accelerators/wisconsin" src="./images/sponsors/gener8tor.svg" height="2.25rem" /> -->
+        <!-- </LogoRow> -->
+        <!-- <LogoRow class="mt-4"> -->
+            <!-- <SponsorLogo name="BUBBL’R" href="https://www.drinkbubblr.com/" src="./images/partners/bubblr.png" height="3.5rem" imageClass="-mt-6" imageStyle="object-position: center;" /> -->
+            <!-- <SponsorLogo name="Poppi" href="https://drinkpoppi.com/" src="./images/partners/poppi.svg" height="2.5rem" imageStyle="object-position: center;" /> -->
+        <!-- </LogoRow> -->
+    <!-- </div> -->
+
+    <!-- -------------------------------------------------------------------- -->
+    <!-- -------------------------------------------------------------------- -->
+    <!-- -------------------------------------------------------------------- -->
+    <!-- -------------------------------------------------------------------- -->
+    <!-- -------------------------------------------------------------------- -->
+    <!-- -------------------------------------------------------------------- -->
+
+
+    <!-- <div class="relative pb-10 pt-10 sm:pt-10 sm:pb-20 ml-auto min-h-full flex flex-col items-center">
+        <h1 class="font-header text-white font-semibold text-3xl md:text-4xl xl:text-5xl mt-4 mb-4 sponsors">Fall 2025 Sponsors</h1>
+        <SponsorTier tier={1}>
+            <SponsorLogo name="American Family Insurance" href="https://www.amfam.com/careers" src="./images/sponsors/americanfamilyinsurance.svg" />
+        </SponsorTier>
+        <SponsorTier tier={2}>
+            <SponsorLogo name="TDS Telecom" href="https://tdstelecom.com/careers.html" src="./images/sponsors/tds.svg" />
+            <SponsorLogo name="Fish Audio" href="https://www.fish.audio/" src="./images/sponsors/fish-wordmark.svg" />
+            <SponsorLogo name="Capital One" href="https://www.capitalonecareers.com/" src="./images/sponsors/capitalone.svg" />
+        </SponsorTier>
+        <SponsorTier tier={3}>
+            <SponsorLogo name="Epic" href="https://careers.epic.com/" src="./images/sponsors/epic.svg" />
+            <SponsorLogo name="Madison Gas and Electric" href="https://www.mge.com/careers" src="./images/sponsors/mge.svg" height="6rem" />
+            <SponsorLogo name="Google" href="https://www.google.com/about/careers/" src="./images/sponsors/google.svg" height="3rem" />
+            <SponsorLogo name="Mastra" href="https://mastra.ai/" src="./images/sponsors/mastra.svg" height="3rem" />
         </SponsorTier>
         <a href="/sponsorship.pdf"><p class="text-cyan-300 mt-8 mb-2">Interested in sponsoring? →</p></a>
     </div>
 
     <div class="relative pb-2 pt-0 sm:pt-0 sm:pb-5 ml-auto min-h-full flex flex-col items-center">
-        <h1 class="font-header text-white font-semibold text-3xl md:text-4xl xl:text-5xl mt-4 mb-4">Fall 2026 Partners</h1>
+        <h1 class="font-header text-white font-semibold text-3xl md:text-4xl xl:text-5xl mt-4 mb-4">Fall 2025 Partners</h1>
         <LogoRow>
             <SponsorLogo name="UW–Madison CDIS" href="https://cdis.wisc.edu/" src="./images/partners/cdis.png" height="3.5rem" />
         </LogoRow>
 
         <LogoRow>
-            <!-- <SponsorLogo name="interviewing.io" href="https://interviewing.io/" src="./images/partners/interviewingio.svg" height="2.5rem" /> -->
-            <!-- <SponsorLogo name="Red Bull" href="https://www.redbull.com/" src="./images/partners/redbull.svg" height="1.75rem" /> -->
-            <!-- <SponsorLogo name="gener8tor" href="https://www.gener8tor.com/investment-accelerators/wisconsin" src="./images/sponsors/gener8tor.svg" height="2.25rem" /> -->
+            <SponsorLogo name="interviewing.io" href="https://interviewing.io/" src="./images/partners/interviewingio.svg" height="2.5rem" />
+            <SponsorLogo name="Red Bull" href="https://www.redbull.com/" src="./images/partners/redbull.svg" height="1.75rem" />
+            <SponsorLogo name="gener8tor" href="https://www.gener8tor.com/investment-accelerators/wisconsin" src="./images/sponsors/gener8tor.svg" height="2.25rem" />
         </LogoRow>
         <LogoRow class="mt-4">
-            <!-- <SponsorLogo name="BUBBL’R" href="https://www.drinkbubblr.com/" src="./images/partners/bubblr.png" height="3.5rem" imageClass="-mt-6" imageStyle="object-position: center;" /> -->
-            <!-- <SponsorLogo name="Poppi" href="https://drinkpoppi.com/" src="./images/partners/poppi.svg" height="2.5rem" imageStyle="object-position: center;" /> -->
+            <SponsorLogo name="BUBBL’R" href="https://www.drinkbubblr.com/" src="./images/partners/bubblr.png" height="3.5rem" imageClass="-mt-6" imageStyle="object-position: center;" />
+            <SponsorLogo name="Poppi" href="https://drinkpoppi.com/" src="./images/partners/poppi.svg" height="2.5rem" imageStyle="object-position: center;" />
         </LogoRow>
-    </div>
+    </div> -->
 
     <!--<div class="relative pb-10 pt-10 sm:pt-10 sm:pb-5 ml-auto min-h-full flex flex-col items-center">
 <h1 class="font-header text-white font-semibold text-3xl md:text-4xl xl:text-5xl mt-4 mb-4">Fall 2023 Sponsors</h1>
