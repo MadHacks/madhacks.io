@@ -11,9 +11,11 @@ import SponsorTier from "./SponsorTier.astro";
 <div id="sponsors" class="w-full mx-auto px-6 md:px-12 xl:px-6">
     <div class="relative pb-10 pt-10 sm:pt-10 sm:pb-20 ml-auto min-h-full flex flex-col items-center">
         <h1 class="font-header text-white font-semibold text-3xl md:text-4xl xl:text-5xl mt-4 mb-4 sponsors">Fall 2026 Sponsors</h1>
+        <hr aria-hidden="true" class="w-full max-w-xl border-0 border-t border-white/30 my-6" />
         <SponsorTier tier={1}>
             <SponsorLogo name="American Family Insurance" href="https://www.amfam.com/careers" src="./images/sponsors/americanfamilyinsurance.svg" />
         </SponsorTier>
+        <hr aria-hidden="true" class="w-full max-w-4xl border-0 border-t border-white/30 my-6" />
         <SponsorTier tier={2}>
             <!-- Use padding to fine-tune spacing for especially wide or crowded logo rows. -->
             <SponsorLogo name="TDS Telecom" href="https://tdstelecom.com/careers.html" src="./images/sponsors/tds.svg" padding="1rem 1.5rem" />
@@ -21,14 +23,15 @@ import SponsorTier from "./SponsorTier.astro";
             <SponsorLogo name="UW–Madison CAI" href="https://cai.wisc.edu/" src="./images/sponsors/cai.png" height="8rem" appearance="grayscale" padding="1rem 1.5rem" imageStyle="width: 13.1rem; object-fit: cover; object-position: center;" />
             <SponsorLogo name="Databricks" href="https://www.databricks.com/company/careers/" src="./images/sponsors/databricks.svg" height="2.5rem" />
         </SponsorTier>
+        <hr aria-hidden="true" class="w-full max-w-4xl border-0 border-t border-white/30 my-6" />
         <SponsorTier tier={3}>
             <SponsorLogo name="SIG" href="https://sig.com/careers/" src="./images/sponsors/SUSQUEHANNA_Logo_White.svg" />
             <SponsorLogo name="Sparkles" href="https://sparkles.dev/careers" src="./images/sponsors/sparklesdev.svg" appearance="inverted" height="2.5rem" />
+            <SponsorLogo name="Epic" href="https://careers.epic.com/" src="./images/sponsors/epic.svg" />
+            <SponsorLogo name="Google" href="https://www.google.com/about/careers/" src="./images/sponsors/google.svg" height="3rem" />
             <!-- <SponsorLogo name="Mastra" href="https://mastra.ai/" src="./images/sponsors/mastra.svg" height="3rem" /> -->
         </SponsorTier>
         <SponsorTier tier={3}>
-            <SponsorLogo name="Epic" href="https://careers.epic.com/" src="./images/sponsors/epic.svg" />
-            <SponsorLogo name="Google" href="https://www.google.com/about/careers/" src="./images/sponsors/google.svg" height="3rem" />
             <!-- <SponsorLogo name="Madison Gas and Electric" href="https://www.mge.com/careers" src="./images/sponsors/mge.svg" height="6rem" /> -->
         </SponsorTier>
         <a href="/sponsorship.pdf"><p class="text-cyan-300 mt-8 mb-2">Interested in sponsoring? →</p></a>
