@@ -8,10 +8,10 @@ export default defineConfig({
   site: 'https://www.madhacks.io',
   redirects: {
     "/apply": "https://airtable.com/appcsCoekwU6sZanl/pagVgAsoZTgmN9Pmn/form",
-    "/walkin": "https://airtable.com/appTh3C58aKBlgn0e/pagDNAYeqCC6QqwSz/form",
-    "/devpost": "https://madhacks-fall-2025.devpost.com",
+    "/walkin": "https://airtable.com/appcsCoekwU6sZanl/pagDNAYeqCC6QqwSz/form",
+    "/devpost": "https://madhacks-2026-uw.devpost.com",
     "/project": "https://airtable.com/appJa8ymShCTPpH9I/pag0C9Q3PGBC9qArU/form",
-    "/organizer-interest": "https://airtable.com/appl182mk027OC698/pag8XoUukjguwopgE/form"
+    "/discord": "https://discord.gg/qJKSEUNTZu"
   },
   integrations: [sitemap(), tailwind(), compress()]
 });
