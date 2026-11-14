@@ -12,7 +12,8 @@ export default defineConfig({
     "/devpost": "https://madhacks-fall-2026.devpost.com",
     "/discord": "https://discord.gg/qJKSEUNTZu",
     "/judge": "https://airtable.com/appcsCoekwU6sZanl/pag3zJ3MmMNhwoTQv/form",
-    "/mentor": "https://airtable.com/appcsCoekwU6sZanl/pag3zJ3MmMNhwoTQv/form"
+    "/mentor": "https://airtable.com/appcsCoekwU6sZanl/pag3zJ3MmMNhwoTQv/form",
+    "/tracks": "https://airtable.com/appcsCoekwU6sZanl/pag6QHLP8OJDeTaWL/form"
   },
   integrations: [sitemap(), tailwind(), compress()]
 });
