@@ -10,7 +10,9 @@ export default defineConfig({
     "/apply": "https://airtable.com/appcsCoekwU6sZanl/pagVgAsoZTgmN9Pmn/form",
     "/walkin": "https://airtable.com/appcsCoekwU6sZanl/pagDNAYeqCC6QqwSz/form",
     "/devpost": "https://madhacks-fall-2026.devpost.com",
-    "/discord": "https://discord.gg/qJKSEUNTZu"
+    "/discord": "https://discord.gg/qJKSEUNTZu",
+    "/judge": "https://airtable.com/appcsCoekwU6sZanl/pag3zJ3MmMNhwoTQv/form",
+    "/mentor": "https://airtable.com/appcsCoekwU6sZanl/pag3zJ3MmMNhwoTQv/form"
   },
   integrations: [sitemap(), tailwind(), compress()]
 });
