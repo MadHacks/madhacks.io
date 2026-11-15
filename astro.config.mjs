@@ -15,7 +15,7 @@ export default defineConfig({
     "/mentor": "https://airtable.com/appcsCoekwU6sZanl/pag3zJ3MmMNhwoTQv/form",
     "/tracks": "https://airtable.com/appcsCoekwU6sZanl/pag6QHLP8OJDeTaWL/form",
     "/map": "",
-    "/feedback": "https://airtable.com/appcsCoekwU6sZanl/paggUWO25uqNrK9gi/form"
+    "/hacker-feedback": "https://airtable.com/appcsCoekwU6sZanl/paggUWO25uqNrK9gi/form"
   },
   integrations: [sitemap(), tailwind(), compress()]
 });
