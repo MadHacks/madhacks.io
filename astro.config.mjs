@@ -14,8 +14,7 @@ export default defineConfig({
     "/judge": "https://airtable.com/appcsCoekwU6sZanl/pag3zJ3MmMNhwoTQv/form",
     "/mentor": "https://airtable.com/appcsCoekwU6sZanl/pag3zJ3MmMNhwoTQv/form",
     "/tracks": "https://airtable.com/appcsCoekwU6sZanl/pag6QHLP8OJDeTaWL/form",
-    "/map": "https://madhacks.io",
     "/hacker-feedback": "https://airtable.com/appcsCoekwU6sZanl/paggUWO25uqNrK9gi/form"
   },
-  integrations: [sitemap(), tailwind(), compress()]
+  integrations: [sitemap(), tailwind(), compress({ Exclude: [(file) => file.endsWith('/map/index.html')] })]
 });
