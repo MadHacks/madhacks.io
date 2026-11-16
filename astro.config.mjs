@@ -11,10 +11,8 @@ export default defineConfig({
     "/walkin": "https://airtable.com/appcsCoekwU6sZanl/pagDNAYeqCC6QqwSz/form",
     "/devpost": "https://madhacks-fall-2026.devpost.com",
     "/discord": "https://discord.gg/qJKSEUNTZu",
-    "/judge": "https://airtable.com/appcsCoekwU6sZanl/pag3zJ3MmMNhwoTQv/form",
-    "/mentor": "https://airtable.com/appcsCoekwU6sZanl/pag3zJ3MmMNhwoTQv/form",
-    "/tracks": "https://airtable.com/appcsCoekwU6sZanl/pag6QHLP8OJDeTaWL/form",
-    "/hacker-feedback": "https://airtable.com/appcsCoekwU6sZanl/paggUWO25uqNrK9gi/form"
+    "/hacker-feedback": "https://airtable.com/appcsCoekwU6sZanl/paggUWO25uqNrK9gi/form",
+    "/staff-feedback": "https://airtable.com/appcsCoekwU6sZanl/pagZ6ZUiiPPo4cZ6D/form"
   },
   integrations: [sitemap(), tailwind(), compress({ Exclude: [(file) => file.endsWith('/map/index.html')] })]
 });
